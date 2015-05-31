@@ -1,12 +1,18 @@
 name: mkv-chapters-xml
-summary: "TODO: Summary"
-description: "TODO: Description"
+summary: parses matroska chapters XML data
+description:
+  Ruby classes for parsing Matroska (MKV) chapters XML data.
+  Also supports automatically extracting chapter data from MKV files
+  using mkvextract.
 license: MIT
 authors: Postmodern
 email: postmodern.mod3@gmail.com
 homepage: https://github.com/postmodern/mkv-chapters-xml#readme
 
+dependencies:
+  nokogiri: ~> 1.0
+
 development_dependencies:
-  rspec: ~> 2.4
+  rspec: ~> 3.0
   rubygems-tasks: ~> 0.2
   yard: ~> 0.8
