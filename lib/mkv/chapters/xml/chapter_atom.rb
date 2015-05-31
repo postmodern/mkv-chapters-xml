@@ -26,13 +26,13 @@ module MKV
         def time_end
           if (chapter_time_end = @node.at('ChapterTimeEnd'))
             Timestamp.parse(chapter_time_end.inner_text)
+          elsif (next_chapter = self.next)
+            next_chapter.time_start
           end
         end
 
         def duration
-          if time_end
-            time_end - time_parse
-          end
+          time_end - time_parse
         end
 
         def display
@@ -45,6 +45,18 @@ module MKV
 
         def enabled?
           flag_enabled?('Enabled')
+        end
+
+        def previous
+          if (prev_node = @node.previous)
+            self.class.new(prev_node)
+          end
+        end
+
+        def next
+          if (next_node = @node.next)
+            self.class.new(next_node)
+          end
         end
 
         private
